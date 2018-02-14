@@ -1,5 +1,5 @@
 (
-curl -X POST localhost:20400/simulation/run -H "Content-Type: application/json" -d @- << EOF
+curl -X POST localhost:31860/simulation/run -H "Content-Type: application/json" -d @- << EOF
 
 {
   "creationTime": 1471346100000,
@@ -7,7 +7,7 @@ curl -X POST localhost:20400/simulation/run -H "Content-Type: application/json" 
     "ezpz": {
       "config": {
         "host": "localhost",
-        "port": 4567,
+        "port": 14567,
         "source": "rt-disco",
         "timeout": 100000
       }
@@ -34,38 +34,12 @@ curl -X POST localhost:20400/simulation/run -H "Content-Type: application/json" 
         "rush.maxBatchSizePerPickup": 3,
         "rush.pool.constraints.max_concurrent_trips": 3,
         "rush.vrp_fetch_candidates_without_ranking_by_candidates_endpoint": true,
+        "rush.solver_type": "LPRounding",
         "ueta_bulk.timeout": 100000,
-        "vrp.rush.taskTimeInSeconds": 300
-      }
-    },
-    "motown": {
-      "config": {
-        "hostname": "localhost",
-        "port": 6296
-      }
-    },
-    "polyline": {
-      "config": {
-        "hostname": "localhost",
-        "port": 4716,
-        "service": "disco",
-        "serviceName": "gurafu"
-      }
-    },
-    "powerhouse": {
-      "config": {
-        "host": "localhost"
-      }
-    },
-    "routePlanner": {
-      "config": {
-        "clientName": "multileg-sirvice-client",
-        "filterRequest": false,
-        "filterResponse": false,
-        "host": "localhost",
-        "port": 4725,
-        "validateRequest": false,
-        "validateResponse": false
+        "vrp.rush.taskTimeInSeconds": 300,
+        "acadia_client.enable": true,
+        "acadia_client.pricing_policy_enabled": true,
+        "acadia_client.vehicle_class_boosting_enabled": false
       }
     },
     "geobase": {
@@ -153,6 +127,74 @@ curl -X POST localhost:20400/simulation/run -H "Content-Type: application/json" 
           }
         }
       ]
+    },
+    "jobConfigurations": [
+      {
+        "configurations": [
+          {
+            "type": "PRICING_POLICY",
+            "value": {
+              "pricingPolicyConfiguration": {
+                "baseFee": 0,
+                "dropoffFee": 150,
+                "minimumFare": 530,
+                "perMileRate": 160,
+                "perMinuteRate": 0,
+                "pickupFee": 380
+              }
+            }
+          }
+        ],
+        "jobUUID": "12345678-1234-5678-1234-000000000000"
+      },
+      {
+        "configurations": [
+          {
+            "type": "PRICING_POLICY",
+            "value": {
+              "pricingPolicyConfiguration": {
+                "baseFee": 0,
+                "dropoffFee": 150,
+                "minimumFare": 530,
+                "perMileRate": 160,
+                "perMinuteRate": 0,
+                "pickupFee": 380
+              }
+            }
+          }
+        ],
+        "jobUUID": "12345678-1234-5678-1234-000000000001"
+      }
+    ],
+    "motown": {
+      "config": {
+        "hostname": "localhost",
+        "port": 16296
+      }
+    },
+    "polyline": {
+      "config": {
+        "hostname": "localhost",
+        "port": 14716,
+        "service": "disco",
+        "serviceName": "gurafu"
+      }
+    },
+    "powerhouse": {
+      "config": {
+        "host": "localhost"
+      }
+    },
+    "routePlanner": {
+      "config": {
+        "clientName": "multileg-sirvice-client",
+        "filterRequest": false,
+        "filterResponse": false,
+        "host": "localhost",
+        "port": 4725,
+        "validateRequest": false,
+        "validateResponse": false
+      }
     },
     "supply": {
       "supplies": [
@@ -244,7 +286,7 @@ curl -X POST localhost:20400/simulation/run -H "Content-Type: application/json" 
       "config": {
         "host": "localhost",
         "name": "ueta",
-        "port": 4200,
+        "port": 14200,
         "service": "disco",
         "timeout": 100000
       }
@@ -267,6 +309,8 @@ curl -X POST localhost:20400/simulation/run -H "Content-Type: application/json" 
         },
         "tenancy": "uber/simulation/964638ba-0654-4672-9c4f-3ff1358989a5",
         "uuid": "12345678-1234-5678-1234-000000000000",
+        "workflowUUID": "32345678-1234-5678-1234-000000000000",
+        "requestApp": "eats-platform",
         "vehicleViewId": 1491,
         "waypoints": [
           {
@@ -336,6 +380,8 @@ curl -X POST localhost:20400/simulation/run -H "Content-Type: application/json" 
         },
         "tenancy": "uber/simulation/964638ba-0654-4672-9c4f-3ff1358989a5",
         "uuid": "12345678-1234-5678-1234-000000000001",
+        "workflowUUID": "32345678-1234-5678-1234-000000000001",
+        "requestApp": "eats-platform",
         "vehicleViewId": 1491,
         "waypoints": [
           {
@@ -397,3 +443,4 @@ curl -X POST localhost:20400/simulation/run -H "Content-Type: application/json" 
 
 EOF
 ) | jq .
+

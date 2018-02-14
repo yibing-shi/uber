@@ -153,11 +153,12 @@ curl -X POST localhost:4725/v2/vrp -H "Content-Type: application/json" -d @- << 
     "traitsToMaxDistanceMeterMap": {},
     "boostVehicleTraitsMaxEtaSec": 600
   },
-  "solverType": "DualSetPacking",
+  "solverType": "LPRounding",
   "eatsMGVParametersMap": {},
   "runPreConstraints": true,
   "requestUUID": "3ea196e1-9e3a-43eb-aee5-8cfce7646995"
-}      
+}
 
 EOF
 ) | jq .
+
