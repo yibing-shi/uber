@@ -1,5 +1,5 @@
 (
-curl -X POST localhost:31860/simulation/run -H "Content-Type: application/json" -d @- << EOF
+curl -X POST localhost:20400/simulation/run -H "Content-Type: application/json" -d @- << EOF
 
 {
   "creationTime": 1471346100000,
@@ -7,7 +7,7 @@ curl -X POST localhost:31860/simulation/run -H "Content-Type: application/json" 
     "ezpz": {
       "config": {
         "host": "localhost",
-        "port": 14567,
+        "port": 4567,
         "source": "rt-disco",
         "timeout": 100000
       }
