@@ -5,7 +5,7 @@ SERVER=adhoc04-sjc1
 ports="14567 14570 14716 14200 8026 4598 20200 20000 21000 8700 5080"
 for port in $ports
 do
-    lsof -n -i4TCP:$port | grep LISTEN | awk '{print $2}' | xargs kill
+    kill `lsof -ti:$port`
 done
 
 #exit
