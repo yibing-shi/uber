@@ -39,7 +39,9 @@ curl -X POST localhost:20400/simulation/run -H "Content-Type: application/json" 
         "vrp.rush.taskTimeInSeconds": 300,
         "acadia_client.enable": true,
         "acadia_client.pricing_policy_enabled": true,
-        "acadia_client.vehicle_class_boosting_enabled": false
+        "acadia_client.vehicle_class_boosting_enabled": false,
+        "vrp.rush.multileg.log_to_kafka": true,
+        "rush.shadow_tcvrp": "tcVrpOnly"
       }
     },
     "geobase": {
@@ -438,7 +440,8 @@ curl -X POST localhost:20400/simulation/run -H "Content-Type: application/json" 
       }
     ]
   },
-  "targetEndpoint": "/vrp/route"
+  "targetEndpoint": "/vrp/route",
+  "tenancy": "uber/simulation/964638ba-0654-4672-9c4f-3ff1358989a5"
 }
 
 EOF
