@@ -1,6 +1,6 @@
 #!/bin/bash
 #SERVER=adhoc01-pvg1
-SERVER=adhoc04-sjc1
+SERVER=compute4443-dca1
 # kill process by port
 ports="14567 14570 14716 14200 8026 4598 20200 20000 21000 8700 5080"
 for port in $ports
@@ -52,3 +52,5 @@ ssh -fN -L 4200:localhost:4200 $SIM_SERVER  # ueta
 #ssh -fN -L 127.0.0.1:21300:127.0.0.1:21300 $SIM_SERVER  # hyperbahn (powerhouse)
 ssh -fN -L 6296:localhost:6296 $SIM_SERVER # motown
 set +x
+
+ssh -fNL 5437:localhost:5437 compute4443-dca1
